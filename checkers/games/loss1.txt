@@ -1,0 +1,697 @@
+Sending initial board: 'rrrrrrrrrrrr........wwwwwwwwwwww -1 r 50'
+rrrrrrrrrr.r...r....wwwwwwwwwwww 0_11_16 w 49
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   ⛂   ⛂   .   ⛂ │ 12     Last move: 11-16
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   . │ 20     Moves until draw: 49
+ 21 │ ⛀   ⛀   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrrrrrrrrr.r...r.w..w.wwwwwwwwww 0_22_18 r 48
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   ⛂   ⛂   .   ⛂ │ 12     Last move: 22-18
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   ⛀   .   . │ 20     Moves until draw: 48
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+rrrrrrr.rrrr...r.w..w.wwwwwwwwww 0_8_11 w 47
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   .   │ 8
+  9 │   ⛂   ⛂   ⛂   ⛂ │ 12     Last move: 8-11
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   ⛀   .   . │ 20     Moves until draw: 47
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrrrrrr.rrrr...rww....wwwwwwwwww 0_21_17 r 46
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   .   │ 8
+  9 │   ⛂   ⛂   ⛂   ⛂ │ 12     Last move: 21-17
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛀   ⛀   .   . │ 20     Moves until draw: 46
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrrrrrr.rrrr....ww.r..wwwwwwwwww 0_16_20 w 45
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   .   │ 8
+  9 │   ⛂   ⛂   ⛂   ⛂ │ 12     Last move: 16-20
+ 13 │ .   .   .   .   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛀   ⛀   .   ⛂ │ 20     Moves until draw: 45
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrrrrrr.rrrr....wwwr..w.wwwwwwww 0_24_19 r 44
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   .   │ 8
+  9 │   ⛂   ⛂   ⛂   ⛂ │ 12     Last move: 24-19
+ 13 │ .   .   .   .   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛀   ⛀   ⛀   ⛂ │ 20     Moves until draw: 44
+ 21 │ .   .   ⛀   .   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrrrrrr.rr.r...rwwwr..w.wwwwwwww 0_11_16 w 43
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   .   │ 8
+  9 │   ⛂   ⛂   .   ⛂ │ 12     Last move: 11-16
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛀   ⛀   ⛀   ⛂ │ 20     Moves until draw: 43
+ 21 │ .   .   ⛀   .   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+rrrrrrr.rr.r...rwwwr..wwwww.wwww 0_28_24 r 42
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   ⛂ │ 4
+  5 │ ⛂   ⛂   ⛂   .   │ 8
+  9 │   ⛂   ⛂   .   ⛂ │ 12     Last move: 28-24
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛀   ⛀   ⛀   ⛂ │ 20     Moves until draw: 42
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   . │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrr.rrrrrr.r...rwwwr..wwwww.wwww 0_4_8 w 41
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   ⛂   ⛂   .   ⛂ │ 12     Last move: 4-8
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛀   ⛀   ⛀   ⛂ │ 20     Moves until draw: 41
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   . │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+rrr.rrrrrr.r..wrw.wr..wwwww.wwww 0_18_15 r 40
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   ⛂   ⛂   .   ⛂ │ 12     Last move: 18-15
+ 13 │ .   .   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛀   .   ⛀   ⛂ │ 20     Moves until draw: 40
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   . │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrr.rrrr.r.r.rwrw.wr..wwwww.wwww 0_9_14 w 39
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 9-14
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛀   .   ⛀   ⛂ │ 20     Moves until draw: 39
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   . │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrr.rrrr.r.rwrwr..wr..wwwww.wwww 0_17_13 r 38
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 17-13
+ 13 │ ⛀   ⛂   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   ⛀   ⛂ │ 20     Moves until draw: 38
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   . │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+rrr.rrrr.r.rw.wrr.wr..wwwww.wwww 0_14_17 w 37
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 14-17
+ 13 │ ⛀   .   ⛀   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 37
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   . │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   ⛀   │ 32
+    ╰─────────────────╯
+
+rrr.rrrr.r.rw.wrr.wr..wwwwwwwww. 0_32_28 r 36
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 32-28
+ 13 │ ⛀   .   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 36
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+rrr.rr.r.rrrw.wrr.wr..wwwwwwwww. 0_7_11 w 35
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   .   ⛂   │ 8
+  9 │   .   ⛂   ⛂   ⛂ │ 12     Last move: 7-11
+ 13 │ ⛀   .   ⛀   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 35
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rrr.rr.rwrrr..wrr.wr..wwwwwwwww. 0_13_9 r 34
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ ⛂   ⛂   .   ⛂   │ 8
+  9 │   ⛀   ⛂   ⛂   ⛂ │ 12     Last move: 13-9
+ 13 │ .   .   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 34
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 12
+ 29 │ ⛀   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+rrr..r.r.rrr.rwrr.wr..wwwwwwwww. 1_5_14 w 50
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ .   ⛂   .   ⛂   │ 8
+  9 │   .   ⛂   ⛂   ⛂ │ 12     Last move: 5x14
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 50
+ 21 │ .   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 11
+ 29 │ ⛀   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rrr..r.r.rrr.rwrr.wrw.ww.wwwwww. 0_25_21 r 49
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ .   ⛂   .   ⛂   │ 8
+  9 │   .   ⛂   ⛂   ⛂ │ 12     Last move: 25-21
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 49
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   .   ⛀   ⛀   ⛀ │ 28     White pieces: 11
+ 29 │ ⛀   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rrr..r.r.r.r.r.rrrwrw.ww.wwwwww. 1_11_18 w 50
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ .   ⛂   .   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 11x18
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   ⛂   ⛀   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   .   ⛀   ⛀   ⛀ │ 28     White pieces: 10
+ 29 │ ⛀   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+rrr..r.r.r.r.r.rrrwrw.wwwwww.ww. 0_29_25 r 49
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   ⛂   . │ 4
+  5 │ .   ⛂   .   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 29-25
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   ⛂   ⛀   ⛂ │ 20     Moves until draw: 49
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 10
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rr...rrr.r.r.r.rrrwrw.wwwwww.ww. 0_3_7 w 48
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 3-7
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   ⛂   ⛀   ⛂ │ 20     Moves until draw: 48
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛀   ⛀   ⛀   ⛀ │ 28     White pieces: 10
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+rr...rrr.r.r.r.rrrwrwwww.www.ww. 0_25_22 r 47
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 25-22
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   ⛂   ⛀   ⛂ │ 20     Moves until draw: 47
+ 21 │ ⛀   ⛀   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   .   ⛀   ⛀   ⛀ │ 28     White pieces: 10
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rr...rrr.r.r.r.rr.wrw.wwrwww.ww. 1_18_25 w 50
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 18x25
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛂   ⛀   ⛀   ⛀ │ 28     White pieces: 9
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+rr...rrr.r.r.rwrr..rw.wwrwww.ww. 0_19_15 r 49
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 19-15
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 49
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛂   ⛀   ⛀   ⛀ │ 28     White pieces: 9
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rr...rrr...r.r.rr.rrw.wwrwww.ww. 1_10_19 w 50
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 10x19
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛂   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   12
+ 25 │   ⛂   ⛀   ⛀   ⛀ │ 28     White pieces: 8
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rr...rrr...r.rwrr..rw.w.rwww.ww. 1_24_15 r 50
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 24x15
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   11
+ 25 │   ⛂   ⛀   ⛀   ⛀ │ 28     White pieces: 8
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+rr....rr.r.r.rwrr..rw.w.rwww.ww. 0_6_10 w 49
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 6-10
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 49
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   11
+ 25 │   ⛂   ⛀   ⛀   ⛀ │ 28     White pieces: 8
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+rr...wrr...r.r.rr..rw.w.rwww.ww. 1_15_6 r 50
+    ╭─────────────────╮
+  1 │   ⛂   ⛂   .   . │ 4
+  5 │ .   ⛀   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 15x6
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   10
+ 25 │   ⛂   ⛀   ⛀   ⛀ │ 28     White pieces: 8
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+.r....rr.r.r.r.rr..rw.w.rwww.ww. 1_1_10 w 50
+    ╭─────────────────╮
+  1 │   .   ⛂   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 1x10
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   10
+ 25 │   ⛂   ⛀   ⛀   ⛀ │ 28     White pieces: 7
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+.r....rr.r.r.r.rr..rw.wwrww..ww. 0_28_24 r 49
+    ╭─────────────────╮
+  1 │   .   ⛂   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 28-24
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 49
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   10
+ 25 │   ⛂   ⛀   ⛀   . │ 28     White pieces: 7
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+.....rrr.r.r.r.rr..rw.wwrww..ww. 0_2_6 w 48
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 2-6
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 48
+ 21 │ ⛀   .   ⛀   ⛀   │ 24     Red pieces:   10
+ 25 │   ⛂   ⛀   ⛀   . │ 28     White pieces: 7
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+.....rrr.r.r.r.rr.wrw.w.rww..ww. 0_24_19 r 47
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 24-19
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 47
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   10
+ 25 │   ⛂   ⛀   ⛀   . │ 28     White pieces: 7
+ 29 │ .   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+
+.....rrr.r.r.r.rr.wrw.w..ww.Rww. 0_25_29 w 46
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 25-29
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 46
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   10
+ 25 │   .   ⛀   ⛀   . │ 28     White pieces: 7
+ 29 │ ⛃   ⛀   ⛀   .   │ 32
+    ╰─────────────────╯
+.....rrr.r.r.r.rr.wrw.w.www.R.w. 0_30_25 r 45
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 30-25
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 45
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   10
+ 25 │   ⛀   ⛀   ⛀   . │ 28     White pieces: 7
+ 29 │ ⛃   .   ⛀   .   │ 32
+    ╰─────────────────╯
+
+.....rrr.r.r.r.rr.wrwRw..ww...w. 1_29_22 w 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 29x22
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛀   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   ⛃   ⛀   .   │ 24     Red pieces:   10
+ 25 │   .   ⛀   ⛀   . │ 28     White pieces: 6
+ 29 │ .   .   ⛀   .   │ 32
+    ╰─────────────────╯
+.....rrr.r.r.rwrr..rwRw..ww...w. 0_19_15 r 49
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛂   .   ⛂ │ 12     Last move: 19-15
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   .   ⛂ │ 20     Moves until draw: 49
+ 21 │ ⛀   ⛃   ⛀   .   │ 24     Red pieces:   10
+ 25 │   .   ⛀   ⛀   . │ 28     White pieces: 6
+ 29 │ .   .   ⛀   .   │ 32
+    ╰─────────────────╯
+
+.....rrr...r.r.rr.rrwRw..ww...w. 1_10_19 w 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 10x19
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛂   ⛂ │ 20     Moves until draw: 50
+ 21 │ ⛀   ⛃   ⛀   .   │ 24     Red pieces:   10
+ 25 │   .   ⛀   ⛀   . │ 28     White pieces: 5
+ 29 │ .   .   ⛀   .   │ 32
+    ╰─────────────────╯
+.....rrr...r.r.rr.rrwRww.w....w. 0_27_24 r 49
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 27-24
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   ⛂   ⛂ │ 20     Moves until draw: 49
+ 21 │ ⛀   ⛃   ⛀   ⛀   │ 24     Red pieces:   10
+ 25 │   .   ⛀   .   . │ 28     White pieces: 5
+ 29 │ .   .   ⛀   .   │ 32
+    ╰─────────────────╯
+
+.....rrr...r.r.rr.r.wRw..wr...w. 1_20_27 w 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 20x27
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   ⛂   . │ 20     Moves until draw: 50
+ 21 │ ⛀   ⛃   ⛀   .   │ 24     Red pieces:   10
+ 25 │   .   ⛀   ⛂   . │ 28     White pieces: 4
+ 29 │ .   .   ⛀   .   │ 32
+    ╰─────────────────╯
+
+.....rrr...r.rwrr...wRw..w...... 2_31_24_15 r 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 31x24x15
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   .   . │ 20     Moves until draw: 50
+ 21 │ ⛀   ⛃   ⛀   .   │ 24     Red pieces:   8
+ 25 │   .   ⛀   .   . │ 28     White pieces: 4
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+.....rrr...r.rwrr...w.w.......R. 1_22_31 w 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 22x31
+ 13 │ .   ⛂   ⛀   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   .   . │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   8
+ 25 │   .   .   .   . │ 28     White pieces: 3
+ 29 │ .   .   ⛃   .   │ 32
+    ╰─────────────────╯
+
+.....rrr.w.r.r.rr...w.w.......R. 0_15_10 r 49
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛂   ⛂   ⛂   │ 8
+  9 │   .   ⛀   .   ⛂ │ 12     Last move: 15-10
+ 13 │ .   ⛂   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   .   .   . │ 20     Moves until draw: 49
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   8
+ 25 │   .   .   .   . │ 28     White pieces: 3
+ 29 │ .   .   ⛃   .   │ 32
+    ╰─────────────────╯
+......rr...r.rrrr...w.w.......R. 1_6_15 w 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 6x15
+ 13 │ .   ⛂   ⛂   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   .   . │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛀   .   │ 24     Red pieces:   8
+ 25 │   .   .   .   . │ 28     White pieces: 2
+ 29 │ .   .   ⛃   .   │ 32
+    ╰─────────────────╯
+
+......rr...r.rrrrw..w.........R. 0_23_18 r 49
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 23-18
+ 13 │ .   ⛂   ⛂   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   ⛂   ⛀   .   . │ 20     Moves until draw: 49
+ 21 │ ⛀   .   .   .   │ 24     Red pieces:   8
+ 25 │   .   .   .   . │ 28     White pieces: 2
+ 29 │ .   .   ⛃   .   │ 32
+    ╰─────────────────╯
+......rr...r..rrr...w.r.......R. 1_14_23 w 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 14x23
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   ⛂   .   .   . │ 20     Moves until draw: 50
+ 21 │ ⛀   .   ⛂   .   │ 24     Red pieces:   8
+ 25 │   .   .   .   . │ 28     White pieces: 1
+ 29 │ .   .   ⛃   .   │ 32
+    ╰─────────────────╯
+
+......rr...r.wrr......r.......R. 1_21_14 r 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 21x14
+ 13 │ .   ⛀   ⛂   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   . │ 20     Moves until draw: 50
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   .   .   . │ 28     White pieces: 1
+ 29 │ .   .   ⛃   .   │ 32
+    ╰─────────────────╯
+
+......rr...r.wrr......r..R...... 0_31_26 w 49
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   .   .   .   ⛂ │ 12     Last move: 31-26
+ 13 │ .   ⛀   ⛂   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   . │ 20     Moves until draw: 49
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+......rrw..r..rr......r..R...... 0_14_9 r 48
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   ⛂   ⛂   │ 8
+  9 │   ⛀   .   .   ⛂ │ 12     Last move: 14-9
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   . │ 20     Moves until draw: 48
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+
+.......rw.rr..rr......r..R...... 0_7_11 w 47
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   .   ⛂   │ 8
+  9 │   ⛀   .   ⛂   ⛂ │ 12     Last move: 7-11
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   . │ 20     Moves until draw: 47
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+.....w.r..rr..rr......r..R...... 0_9_6 r 46
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛀   .   ⛂   │ 8
+  9 │   .   .   ⛂   ⛂ │ 12     Last move: 9-6
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   . │ 20     Moves until draw: 46
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+
+.....w.r..rr..r....r..r..R...... 0_16_20 w 45
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛀   .   ⛂   │ 8
+  9 │   .   .   ⛂   ⛂ │ 12     Last move: 16-20
+ 13 │ .   .   ⛂   .   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 45
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+W......r..rr..r....r..r..R...... 0_6_1 r 44
+    ╭─────────────────╮
+  1 │   ⛁   .   .   . │ 4
+  5 │ .   .   .   ⛂   │ 8
+  9 │   .   .   ⛂   ⛂ │ 12     Last move: 6-1
+ 13 │ .   .   ⛂   .   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 44
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+
+W......r..r...rr...r..r..R...... 0_12_16 w 43
+    ╭─────────────────╮
+  1 │   ⛁   .   .   . │ 4
+  5 │ .   .   .   ⛂   │ 8
+  9 │   .   .   ⛂   . │ 12     Last move: 12-16
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 43
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+
+.....W.r..r...rr...r..r..R...... 0_1_6 r 42
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛁   .   ⛂   │ 8
+  9 │   .   .   ⛂   . │ 12     Last move: 1-6
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 42
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+.....W....rr..rr...r..r..R...... 0_8_12 w 41
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   ⛁   .   .   │ 8
+  9 │   .   .   ⛂   ⛂ │ 12     Last move: 8-12
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 41
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+
+.........Wrr..rr...r..r..R...... 0_6_10 r 40
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   .   .   │ 8
+  9 │   .   ⛁   ⛂   ⛂ │ 12     Last move: 6-10
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 40
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   ⛃   .   . │ 28     White pieces: 1
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+.........Wrr..rr...r..r......R.. 0_26_30 w 39
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   .   .   │ 8
+  9 │   .   ⛁   ⛂   ⛂ │ 12     Last move: 26-30
+ 13 │ .   .   ⛂   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 39
+ 21 │ .   .   ⛂   .   │ 24     Red pieces:   7
+ 25 │   .   .   .   . │ 28     White pieces: 1
+ 29 │ .   ⛃   .   .   │ 32
+    ╰─────────────────╯
+
+..........rr...r...r.....W...R.. 2_10_19_26 r 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   .   .   │ 8
+  9 │   .   .   ⛂   ⛂ │ 12     Last move: 10x19x26
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 50
+ 21 │ .   .   .   .   │ 24     Red pieces:   5
+ 25 │   .   ⛁   .   . │ 28     White pieces: 1
+ 29 │ .   ⛃   .   .   │ 32
+    ╰─────────────────╯
+..........rr...r...r..R......... 1_30_23 w 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   .   .   │ 8
+  9 │   .   .   ⛂   ⛂ │ 12     Last move: 30x23
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛀  (My turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 50
+ 21 │ .   .   ⛃   .   │ 24     Red pieces:   5
+ 25 │   .   .   .   . │ 28     White pieces: 0
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+
+..........rr...r...r..R......... -2 r 50
+    ╭─────────────────╮
+  1 │   .   .   .   . │ 4
+  5 │ .   .   .   .   │ 8
+  9 │   .   .   ⛂   ⛂ │ 12     Last move: RW
+ 13 │ .   .   .   ⛂   │ 16     Next player: ⛂  (Opponents turn)
+ 17 │   .   .   .   ⛂ │ 20     Moves until draw: 50
+ 21 │ .   .   ⛃   .   │ 24     Red pieces:   5
+ 25 │   .   .   .   . │ 28     White pieces: 0
+ 29 │ .   .   .   .   │ 32
+    ╰─────────────────╯
+
