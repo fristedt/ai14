@@ -141,6 +141,7 @@ double getProbabilityOfEmissionSequence(std::vector<std::vector<double>> transit
   return sum;
 }
 
+// Stolen from Nikolai Shokhirev. http://www.shokhirev.com/nikolai/abc/alg/hmm/hmm.html
 std::vector<int> getLikeliestHiddenStates(std::vector<std::vector<double>> transitionMatrix,
                                           std::vector<std::vector<double>> emissionMatrix,
                                           std::vector<std::vector<double>> initialMatrix,
