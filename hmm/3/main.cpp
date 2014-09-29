@@ -11,6 +11,10 @@ double getProbabilityOfEmissionSequence(std::vector<std::vector<double>> transit
                                         std::vector<std::vector<double>> emissionMatrix,
                                         std::vector<std::vector<double>> initialMatrix,
                                         std::vector<int> sequence);
+std::vector<int> getLikeliestHiddenStates(std::vector<std::vector<double>> transitionMatrix,
+                                          std::vector<std::vector<double>> emissionMatrix,
+                                          std::vector<std::vector<double>> initialMatrix,
+                                          std::vector<int> sequence);
 
 int main(int argc, char *argv[]) {
   // Read stuff from cin. 
@@ -78,8 +82,11 @@ int main(int argc, char *argv[]) {
   }
 
 
-  double prob = getProbabilityOfEmissionSequence(transitions, emissions, initials, sequence);
-  std::cout << std::fixed << std::setprecision(6) << prob << std::endl;
+  std::vector<int> likeliestHiddenStates = getLikeliestHiddenStates(transitions, emissions, initials, sequence);
+  std::cout << likeliestHiddenStates[0];
+  for (unsigned int i = 1; i < likeliestHiddenStates.size(); ++i) {
+  std::cout << " " << likeliestHiddenStates[i];
+  }
 
   return 0;
 }
@@ -134,3 +141,53 @@ double getProbabilityOfEmissionSequence(std::vector<std::vector<double>> transit
   return sum;
 }
 
+std::vector<int> getLikeliestHiddenStates(std::vector<std::vector<double>> transitionMatrix,
+                                          std::vector<std::vector<double>> emissionMatrix,
+                                          std::vector<std::vector<double>> initialMatrix,
+                                          std::vector<int> sequence) {
+  std::vector<std::vector<double>> delta(sequence.size(), std::vector<double>(transitionMatrix.size()));
+  std::vector<std::vector<int>> psi(sequence.size(), std::vector<int>(transitionMatrix.size()));
+  std::vector<int> likeliestHiddenStates(sequence.size());
+
+  // Initialize.
+  for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+    delta[0][i] = initialMatrix[0][i] * emissionMatrix[i][sequence[0]];
+    psi[0][i] = 0;
+  }
+
+  // Recurse.
+  for (unsigned int i = 1; i < sequence.size(); ++i) {
+    for (unsigned int j = 0; j < transitionMatrix.size(); ++j) {
+      double p = 0;
+      int m = 0;
+      for (unsigned int k = 0; k < transitionMatrix.size(); ++k) {
+        double q = delta[i - 1][k] * transitionMatrix[k][j];
+        if (q > p) {
+          p = q;
+          m = k;
+        }
+      }
+      delta[i][j] = p * emissionMatrix[j][sequence[i]];
+      psi[i][j] = m;
+    }
+  }
+
+  // Terminate.
+  double p = 0;
+  int m = 0;
+  for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+    double q = delta[sequence.size() - 1][i];
+    if (q > p) {
+      p = q;
+      m = i;
+    }
+  }
+  likeliestHiddenStates[sequence.size() - 1] = m;
+
+  // Backtrack like void.
+  for (unsigned int i = sequence.size() - 1; i > 0; --i) {
+    likeliestHiddenStates[i - 1] = psi[i][likeliestHiddenStates[i]];
+  }
+
+  return likeliestHiddenStates;
+}
