@@ -2,6 +2,10 @@
 #include <sstream>
 #include <vector>
 
+std::vector<double> getNextEmissionDist(std::vector<std::vector<double>> transitionMatrix, 
+                                        std::vector<std::vector<double>> emissionMatrix, 
+                                        std::vector<std::vector<double>> initialMatrix);
+
 int main(int argc, char *argv[]) {
   // Read stuff from cin. 
   std::string transitionString;
@@ -41,7 +45,6 @@ int main(int argc, char *argv[]) {
     if (y == emissionColumns) { ++x; y = 0; }
   }
 
-
   // Initials.
   int initialRows, initialColumns;
   std::istringstream iss2(initialString);
@@ -55,27 +58,34 @@ int main(int argc, char *argv[]) {
     if (y == initialColumns) { ++x; y = 0; }
   }
 
-  // Calculate distribution for all next states.
-  std::vector<double> nextStateDist(transitionRows);
-  for (int i = 0; i < transitionRows; ++i) {
-    for (int j = 0; j < transitionColumns; ++j) {
-      nextStateDist[i] += (initials[0][j] * transitions[j][i]);
-    }
-  }
+  std::vector<double> nextEmissionDist = getNextEmissionDist(transitions, emissions, initials);
 
-  // Calculate distribution for all next emissions.
-  std::vector<double>nextEmissionDist(emissionColumns);
-  for (int i = 0; i < emissionColumns; ++i) {
-    for (int j = 0; j < emissionRows; ++j) {
-      nextEmissionDist[i] += nextStateDist[j] * emissions[j][i];
-    }
-  }
-
-  // Print that shit.
-  std::cout << 1 << " " << emissionColumns;
-  for (int i = 0; i < emissionColumns; ++i) {
+  // Print that shit. HMM1.
+  std::cout << 1 << " " << emissions[0].size();
+  for (unsigned int i = 0; i < emissions[0].size(); ++i) {
     std::cout << " " << nextEmissionDist[i];
   }
 
   return 0;
+}
+
+std::vector<double> getNextEmissionDist(std::vector<std::vector<double>> transitionMatrix, 
+                                        std::vector<std::vector<double>> emissionMatrix, 
+                                        std::vector<std::vector<double>> initialMatrix) {
+  // Calculate distribution for all next states.
+  std::vector<double> nextStateDist(transitionMatrix.size());
+  for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+    for (unsigned int j = 0; j < transitionMatrix[0].size(); ++j) {
+      nextStateDist[i] += (initialMatrix[0][j] * transitionMatrix[j][i]);
+    }
+  }
+
+  // Calculate distribution for all next emissions.
+  std::vector<double>nextEmissionDist(emissionMatrix[0].size());
+  for (unsigned int i = 0; i < emissionMatrix[0].size(); ++i) {
+    for (unsigned int j = 0; j < emissionMatrix.size(); ++j) {
+      nextEmissionDist[i] += nextStateDist[j] * emissionMatrix[j][i];
+    }
+  }
+  return nextEmissionDist;
 }
