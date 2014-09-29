@@ -7,6 +7,10 @@
 std::vector<double> getNextEmissionDist(std::vector<std::vector<double>> transitionMatrix, 
                                         std::vector<std::vector<double>> emissionMatrix, 
                                         std::vector<std::vector<double>> initialMatrix);
+double getProbabilityOfEmissionSequence(std::vector<std::vector<double>> transitionMatrix,
+                                        std::vector<std::vector<double>> emissionMatrix,
+                                        std::vector<std::vector<double>> initialMatrix,
+                                        std::vector<int> sequence);
 
 int main(int argc, char *argv[]) {
   // Read stuff from cin. 
@@ -73,41 +77,9 @@ int main(int argc, char *argv[]) {
     sequence[x++] = tmp;
   }
 
-  std::vector<std::vector<double>> alpha(sequenceLength, std::vector<double>(transitionRows));
-  // Initialize. Calculate alphaduder sequence[0].
-  for (int i = 0; i < transitionRows; ++i) {
-    alpha[0][i] = initials[0][i] * emissions[i][sequence[0]];
-    // std::cout << "alphai: " << alpha[0][i] << std::endl;
-  }
 
-  for (int i = 1; i < sequenceLength; ++i) {
-    for (int j = 0; j < transitionRows; ++j) {
-      double sum = 0;
-      for (int k = 0; k < transitionRows; ++k) {
-        // std::cout << "alhpai-1k: " << alpha[i - 1][k] << std::endl;
-        // std::cout << "trans    : " << transitions[k][j] << std::endl << std::endl;
-        sum += alpha[i - 1][k] * transitions[k][j];
-      }
-      alpha[i][j] = sum * emissions[j][sequence[i]];
-      // std::cout << "sum    : " << sum << std::endl;
-      // std::cout << "seqi   : " << sequence[i] << std::endl;
-      // std::cout << "alphaij: " << alpha[i][j] << std::endl;
-    }
-  }
-  
-  // for (int i = 0; i < sequenceLength; ++i) {
-  //   for (int j = 0; j < transitionRows; ++j) {
-  //     std::cout << "alpha(" << i << ", " << j << "): " << alpha[i][j];
-  //     std::cout << std::endl;
-  //   }
-  //   std::cout << std::endl;
-  // }
-
-  double sum = 0;
-  for (int i = 0; i < transitionRows; ++i) {
-    sum += alpha[sequenceLength - 1][i];
-  }
-  std::cout << std::fixed << std::setprecision(6) << sum << std::endl;
+  double prob = getProbabilityOfEmissionSequence(transitions, emissions, initials, sequence);
+  std::cout << std::fixed << std::setprecision(6) << prob << std::endl;
 
   return 0;
 }
@@ -132,3 +104,33 @@ std::vector<double> getNextEmissionDist(std::vector<std::vector<double>> transit
   }
   return nextEmissionDist;
 }
+
+double getProbabilityOfEmissionSequence(std::vector<std::vector<double>> transitionMatrix,
+                                        std::vector<std::vector<double>> emissionMatrix,
+                                        std::vector<std::vector<double>> initialMatrix,
+                                        std::vector<int> sequence) {
+  std::vector<std::vector<double>> alpha(sequence.size(), std::vector<double>(transitionMatrix.size()));
+  // Initialize. Calculate alphaduder sequence[0].
+  for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+    alpha[0][i] = initialMatrix[0][i] * emissionMatrix[i][sequence[0]];
+  }
+
+  // Recurse.
+  for (unsigned int i = 1; i < sequence.size(); ++i) {
+    for (unsigned int j = 0; j < transitionMatrix.size(); ++j) {
+      double sum = 0;
+      for (unsigned int k = 0; k < transitionMatrix.size(); ++k) {
+        sum += alpha[i - 1][k] * transitionMatrix[k][j];
+      }
+      alpha[i][j] = sum * emissionMatrix[j][sequence[i]];
+    }
+  }
+
+  // Termination.
+  double sum = 0;
+  for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+    sum += alpha[sequence.size() - 1][i];
+  }
+  return sum;
+}
+
