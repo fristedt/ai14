@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <cmath>
+#include <cassert>
 
 std::vector<long double> getNextEmissionDist(std::vector<std::vector<long double>> transitionMatrix, 
                                         std::vector<std::vector<long double>> emissionMatrix, 
@@ -17,6 +18,7 @@ std::vector<std::vector<long double>> getBeta(std::vector<std::vector<long doubl
                                           std::vector<int> sequence);
 long double getNorm(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta);
 std::vector<std::vector<long double>> getGamma(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta, long double norm);
+std::vector<std::vector<long double>> getInitials(std::vector<std::vector<long double>> gamma);
 long double getForwardProbability(std::vector<std::vector<long double>> transitionMatrix,
                                         std::vector<std::vector<long double>> emissionMatrix,
                                         std::vector<std::vector<long double>> initialMatrix,
@@ -25,6 +27,16 @@ std::vector<int> getLikeliestHiddenStates(std::vector<std::vector<long double>> 
                                           std::vector<std::vector<long double>> emissionMatrix,
                                           std::vector<std::vector<long double>> initialMatrix,
                                           std::vector<int> sequence);
+void baumWelchIteration(std::vector<std::vector<long double>> transitions,
+                        std::vector<std::vector<long double>> emissions,
+                        std::vector<std::vector<long double>> &newTransitions,
+                        std::vector<std::vector<long double>> &newEmissions,
+                        std::vector<std::vector<long double>> &newInitials,
+                        std::vector<std::vector<long double>> initials,
+                        std::vector<int> sequence);
+
+void printHMM4(std::vector<std::vector<long double>> transitionMatrix,
+               std::vector<std::vector<long double>> emissionMatrix);
 
 // Most of the stuff in this file is stolen from Nikolai Shokhirev.
 // His code was written in Pascal though, so some things might differ.
@@ -94,62 +106,21 @@ int main(int argc, char *argv[]) {
     sequence[x++] = tmp;
   }
 
-  std::vector<std::vector<long double>> alpha = getAlpha(transitions, emissions, initials, sequence);
-  std::vector<std::vector<long double>> beta = getBeta(transitions, emissions, initials, sequence);
-  long double norm = getNorm(alpha, beta);
-  std::vector<std::vector<long double>> gamma = getGamma(alpha, beta, norm);
 
-  // Improve transition matrix.
+  // std::vector<std::vector<long double>> oldTransitions(transitions.size(), std::vector<long double>(transitions[0].size()));
+  // std::vector<std::vector<long double>> oldEmissions(emissions.size(), std::vector<long double>(emissions[0].size()));
   std::vector<std::vector<long double>> newTransitions(transitions.size(), std::vector<long double>(transitions[0].size()));
-  for (unsigned int i = 0; i < transitions.size(); ++i) {
-    long double den = 0;
-    for (unsigned int t = 0; t < sequence.size() - 1; ++t)
-      den += gamma[t][i];
-
-    for (unsigned int j = 0; j < transitions[0].size(); ++j) {
-      long double num = 0;
-      for (unsigned int t = 0; t < sequence.size() - 1; ++t) {
-        long double xi = (alpha[t][i] * transitions[i][j] * emissions[j][sequence[t + 1]] * beta[t + 1][i]) / norm;
-        num += xi;
-      }
-      newTransitions[i][j] = num / den;
-    }
-  }
-
-  // Improve emission matrix.
   std::vector<std::vector<long double>> newEmissions(emissions.size(), std::vector<long double>(emissions[0].size()));
-  for (unsigned int i = 0; i < emissions.size(); ++i) {
-    for (unsigned int j = 0; j < emissions[0].size(); ++j) {
-      newEmissions[i][j] = 0;
-    }
+  std::vector<std::vector<long double>> newInitials(initials.size(), std::vector<long double>(initials[0].size()));
+  for (int x = 0; x < 16; ++x) {
+    baumWelchIteration(transitions, emissions, newTransitions, newEmissions, newInitials, initials, sequence);
+    transitions = newTransitions;
+    emissions = newEmissions;
+    initials = newInitials;
   }
 
-  for (unsigned int i = 0; i < transitions.size(); ++i) {
-    long double den = 0;
-    for (unsigned int t = 0; t < sequence.size(); ++t) {
-      den += gamma[t][i];
-      for (unsigned int t = 0; t < sequence.size(); ++t) {
-        newEmissions[i][sequence[t]] = (newEmissions[i][sequence[t]] + gamma[t][i]) / den;
-      }
-    }
-  }
+  printHMM4(transitions, emissions);
 
-  // Print the shit.
-  std::cout << newTransitions.size() << " " << newTransitions[0].size();
-  for (unsigned int i = 0; i < transitions.size(); ++i) {
-    for (unsigned int j = 0; j < transitions[0].size(); ++j) {
-      std::cout << " " << newTransitions[i][j];
-    }
-  }
-
-  std::cout << std::endl;
-
-  std::cout << newEmissions.size() << " " << newEmissions[0].size();
-  for (unsigned int i = 0; i < emissions.size(); ++i) {
-    for (unsigned int j = 0; j < emissions[0].size(); ++j) {
-      std::cout << " " << newEmissions[i][j];
-    }
-  }
   return 0;
 }
 
@@ -232,11 +203,25 @@ long double getNorm(std::vector<std::vector<long double>> alpha, std::vector<std
 std::vector<std::vector<long double>> getGamma(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta, long double norm) {
   std::vector<std::vector<long double>> gamma(alpha.size(), std::vector<long double>(alpha[0].size()));
   for (unsigned int t = 0; t < alpha.size(); ++t) {
+    // long double tsum = 0;
     for (unsigned int i = 0; i < alpha[0].size(); ++i) {
       gamma[t][i] = (alpha[t][i]*beta[t][i]) / norm;
+      // std::cout << gamma[t][i] << std::endl;
+      assert(gamma[t][i] <= 1);
+      assert(gamma[t][i] >= 0);
+      // tsum += gamma[t][i];
     }
+    // std::cout << "tsum: " << tsum << std::endl;
   }
   return gamma;
+}
+
+std::vector<std::vector<long double>> getInitials(std::vector<std::vector<long double>> gamma) {
+  std::vector<std::vector<long double>> initials(1, std::vector<long double>(gamma.size()));
+  for (unsigned int i = 0; i < gamma.size(); ++i) {
+    initials[0][i] = gamma[0][i];
+  }
+  return initials;
 }
 
 long double getForwardProbability(std::vector<std::vector<long double>> transitionMatrix,
@@ -302,4 +287,68 @@ std::vector<int> getLikeliestHiddenStates(std::vector<std::vector<long double>> 
   }
 
   return likeliestHiddenStates;
+}
+
+void baumWelchIteration(std::vector<std::vector<long double>> transitions,
+                        std::vector<std::vector<long double>> emissions,
+                        std::vector<std::vector<long double>> &newTransitions,
+                        std::vector<std::vector<long double>> &newEmissions,
+                        std::vector<std::vector<long double>> &newInitials,
+                        std::vector<std::vector<long double>> initials,
+                        std::vector<int> sequence) {
+  std::vector<std::vector<long double>> alpha = getAlpha(transitions, emissions, initials, sequence);
+  std::vector<std::vector<long double>> beta = getBeta(transitions, emissions, initials, sequence);
+  long double norm = getNorm(alpha, beta);
+  std::vector<std::vector<long double>> gamma = getGamma(alpha, beta, norm);
+
+  newInitials = getInitials(gamma);
+
+  // Improve transition matrix.
+  for (unsigned int i = 0; i < transitions.size(); ++i) {
+    for (unsigned int j = 0; j < transitions[0].size(); ++j) {
+      long double num, den;
+      den = num = 0;
+      for (unsigned int t = 0; t < sequence.size() - 1; ++t) {
+        long double xi = (alpha[t][i] * transitions[i][j] * emissions[j][sequence[t + 1]] * beta[t + 1][i]) / norm;
+        num += xi;
+        den += gamma[t][i];
+      }
+      newTransitions[i][j] = num / den;
+    }
+  }
+
+  // Improve emission matrix.
+  for (unsigned int i = 0; i < emissions.size(); ++i) {
+    for (unsigned int j = 0; j < emissions[0].size(); ++j) {
+      double den, num;
+      den = num = 0;
+      for (unsigned int t = 0; t < sequence.size(); ++t) {
+        if ((unsigned int)sequence[t] == j) 
+          num += gamma[t][i];
+        den += gamma[t][i];
+      }
+      newEmissions[i][j] = num / den;
+    }
+  }
+}
+
+void printHMM4(std::vector<std::vector<long double>> transitionMatrix,
+               std::vector<std::vector<long double>> emissionMatrix) {
+  int precision = 6;
+  // Print the shit.
+  std::cout << std::setprecision(precision) <<  transitionMatrix.size() << " " << transitionMatrix[0].size();
+  for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+    for (unsigned int j = 0; j < transitionMatrix[0].size(); ++j) {
+      std::cout << " " << std::setprecision(precision) << transitionMatrix[i][j];
+    }
+  }
+
+  std::cout << std::endl;
+
+  std::cout << std::setprecision(precision) << emissionMatrix.size() << " " << emissionMatrix[0].size();
+  for (unsigned int i = 0; i < emissionMatrix.size(); ++i) {
+    for (unsigned int j = 0; j < emissionMatrix[0].size(); ++j) {
+      std::cout << " " << std::setprecision(precision) << emissionMatrix[i][j];
+    }
+  }
 }
