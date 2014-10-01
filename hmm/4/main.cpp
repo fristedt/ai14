@@ -5,6 +5,8 @@
 #include <cmath>
 #include <cassert>
 
+#define FAULT 0.0000001
+
 std::vector<long double> getNextEmissionDist(std::vector<std::vector<long double>> transitionMatrix, 
                                         std::vector<std::vector<long double>> emissionMatrix, 
                                         std::vector<std::vector<long double>> initialMatrix);
@@ -107,12 +109,11 @@ int main(int argc, char *argv[]) {
   }
 
 
-  // std::vector<std::vector<long double>> oldTransitions(transitions.size(), std::vector<long double>(transitions[0].size()));
-  // std::vector<std::vector<long double>> oldEmissions(emissions.size(), std::vector<long double>(emissions[0].size()));
   std::vector<std::vector<long double>> newTransitions(transitions.size(), std::vector<long double>(transitions[0].size()));
   std::vector<std::vector<long double>> newEmissions(emissions.size(), std::vector<long double>(emissions[0].size()));
   std::vector<std::vector<long double>> newInitials(initials.size(), std::vector<long double>(initials[0].size()));
-  for (int x = 0; x < 16; ++x) {
+
+  for (int x = 0; x < 10; ++x) {
     baumWelchIteration(transitions, emissions, newTransitions, newEmissions, newInitials, initials, sequence);
     transitions = newTransitions;
     emissions = newEmissions;
@@ -203,15 +204,16 @@ long double getNorm(std::vector<std::vector<long double>> alpha, std::vector<std
 std::vector<std::vector<long double>> getGamma(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta, long double norm) {
   std::vector<std::vector<long double>> gamma(alpha.size(), std::vector<long double>(alpha[0].size()));
   for (unsigned int t = 0; t < alpha.size(); ++t) {
-    // long double tsum = 0;
+    long double tsum = 0;
     for (unsigned int i = 0; i < alpha[0].size(); ++i) {
       gamma[t][i] = (alpha[t][i]*beta[t][i]) / norm;
       // std::cout << gamma[t][i] << std::endl;
       assert(gamma[t][i] <= 1);
       assert(gamma[t][i] >= 0);
-      // tsum += gamma[t][i];
+      tsum += gamma[t][i];
     }
     // std::cout << "tsum: " << tsum << std::endl;
+    assert(abs(tsum - 1) < FAULT);
   }
   return gamma;
 }
@@ -309,11 +311,15 @@ void baumWelchIteration(std::vector<std::vector<long double>> transitions,
       long double num, den;
       den = num = 0;
       for (unsigned int t = 0; t < sequence.size() - 1; ++t) {
-        long double xi = (alpha[t][i] * transitions[i][j] * emissions[j][sequence[t + 1]] * beta[t + 1][i]) / norm;
+        // long double xi = (alpha[t][i] * transitions[i][j] * emissions[j][sequence[t + 1]] * beta[t + 1][i]) / norm;
+        long double xi = (alpha[t][i] * transitions[i][j] * emissions[j][sequence[t + 1]] * beta[t + 1][j]) / norm;
         num += xi;
         den += gamma[t][i];
       }
+      // std::cout << i << ":" << j << std::endl;
+      // std::cout << "num: " << num << " | " << "den: " << den << std::endl;
       newTransitions[i][j] = num / den;
+      // std::cout << newTransitions[i][j] << std::endl;
     }
   }
 
