@@ -18,6 +18,7 @@ std::vector<std::vector<long double>> getBeta(std::vector<std::vector<long doubl
                                           std::vector<std::vector<long double>> emissionMatrix, 
                                           std::vector<std::vector<long double>> initialMatrix,
                                           std::vector<int> sequence);
+void scaleAlphaBeta(std::vector<int> sequence, std::vector<std::vector<long double>> &alpha, std::vector<std::vector<long double>> &beta);
 long double getNorm(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta);
 std::vector<std::vector<long double>> getGamma(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta, long double norm);
 std::vector<std::vector<long double>> getInitials(std::vector<std::vector<long double>> gamma);
@@ -113,7 +114,8 @@ int main(int argc, char *argv[]) {
   std::vector<std::vector<long double>> newEmissions(emissions.size(), std::vector<long double>(emissions[0].size()));
   std::vector<std::vector<long double>> newInitials(initials.size(), std::vector<long double>(initials[0].size()));
 
-  for (int x = 0; x < 10; ++x) {
+  
+  for (int x = 0; x < 50; ++x) {
     baumWelchIteration(transitions, emissions, newTransitions, newEmissions, newInitials, initials, sequence);
     transitions = newTransitions;
     emissions = newEmissions;
@@ -157,15 +159,16 @@ std::vector<std::vector<long double>> getAlpha(std::vector<std::vector<long doub
   }
 
   // Recurse.
-  for (unsigned int i = 1; i < sequence.size(); ++i) {
+  for (unsigned int t = 1; t < sequence.size(); ++t) {
     for (unsigned int j = 0; j < transitionMatrix.size(); ++j) {
       long double sum = 0;
       for (unsigned int k = 0; k < transitionMatrix[0].size(); ++k) {
-        sum += alpha[i - 1][k] * transitionMatrix[k][j];
+        sum += alpha[t - 1][k] * transitionMatrix[k][j];
       }
-      alpha[i][j] = sum * emissionMatrix[j][sequence[i]];
+      alpha[t][j] = sum * emissionMatrix[j][sequence[t]];
     }
   }
+
   return alpha;
 }
 
@@ -192,6 +195,24 @@ std::vector<std::vector<long double>> getBeta(std::vector<std::vector<long doubl
   return beta;
 }
 
+void scaleAlphaBeta(std::vector<int> sequence, std::vector<std::vector<long double>> &alpha, std::vector<std::vector<long double>> &beta) { 
+  // Scaling variables.
+  std::vector<long double> c(sequence.size());
+
+  for (unsigned int t = 0; t < sequence.size(); ++t) {
+    long double sum = 0;
+    for (unsigned int i = 0; i < alpha[t].size(); ++i) {
+      sum += alpha[t][i];
+    }
+    c[t] = 1 / sum;
+
+    for (unsigned int i = 0; i < alpha[t].size(); ++i) {
+      alpha[t][i] *= c[t];
+      beta[t][i] *= c[t];
+    }
+  }
+}
+
 long double getNorm(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta) {
   long double sum = 0;
   for (unsigned int i = 0; i < alpha[0].size(); ++i) {
@@ -204,16 +225,16 @@ long double getNorm(std::vector<std::vector<long double>> alpha, std::vector<std
 std::vector<std::vector<long double>> getGamma(std::vector<std::vector<long double>> alpha, std::vector<std::vector<long double>> beta, long double norm) {
   std::vector<std::vector<long double>> gamma(alpha.size(), std::vector<long double>(alpha[0].size()));
   for (unsigned int t = 0; t < alpha.size(); ++t) {
-    long double tsum = 0;
+    // long double tsum = 0;
     for (unsigned int i = 0; i < alpha[0].size(); ++i) {
       gamma[t][i] = (alpha[t][i]*beta[t][i]) / norm;
       // std::cout << gamma[t][i] << std::endl;
-      assert(gamma[t][i] <= 1);
-      assert(gamma[t][i] >= 0);
-      tsum += gamma[t][i];
+      // assert(gamma[t][i] <= 1);
+      // assert(gamma[t][i] >= 0);
+      // tsum += gamma[t][i];
     }
     // std::cout << "tsum: " << tsum << std::endl;
-    assert(abs(tsum - 1) < FAULT);
+    // assert(abs(tsum - 1) < FAULT);
   }
   return gamma;
 }
@@ -301,6 +322,7 @@ void baumWelchIteration(std::vector<std::vector<long double>> transitions,
   std::vector<std::vector<long double>> alpha = getAlpha(transitions, emissions, initials, sequence);
   std::vector<std::vector<long double>> beta = getBeta(transitions, emissions, initials, sequence);
   long double norm = getNorm(alpha, beta);
+  // scaleAlphaBeta(sequence, alpha, beta);
   std::vector<std::vector<long double>> gamma = getGamma(alpha, beta, norm);
 
   newInitials = getInitials(gamma);
@@ -311,22 +333,18 @@ void baumWelchIteration(std::vector<std::vector<long double>> transitions,
       long double num, den;
       den = num = 0;
       for (unsigned int t = 0; t < sequence.size() - 1; ++t) {
-        // long double xi = (alpha[t][i] * transitions[i][j] * emissions[j][sequence[t + 1]] * beta[t + 1][i]) / norm;
         long double xi = (alpha[t][i] * transitions[i][j] * emissions[j][sequence[t + 1]] * beta[t + 1][j]) / norm;
         num += xi;
         den += gamma[t][i];
       }
-      // std::cout << i << ":" << j << std::endl;
-      // std::cout << "num: " << num << " | " << "den: " << den << std::endl;
       newTransitions[i][j] = num / den;
-      // std::cout << newTransitions[i][j] << std::endl;
     }
   }
 
   // Improve emission matrix.
   for (unsigned int i = 0; i < emissions.size(); ++i) {
     for (unsigned int j = 0; j < emissions[0].size(); ++j) {
-      double den, num;
+      long double den, num;
       den = num = 0;
       for (unsigned int t = 0; t < sequence.size(); ++t) {
         if ((unsigned int)sequence[t] == j) 
