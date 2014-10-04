@@ -25,6 +25,7 @@ class HMM {
     vector<vector<long double>> getInitials(vector<vector<long double>> gamma);
     long double getForwardProbability(vector<int> sequence);
     vector<int> getLikeliestHiddenStates(vector<int> sequence);
+    void estimateMatrices(vector<int> sequence);
     void baumWelchIteration(vector<int> sequence);
     void printHMM4();
 

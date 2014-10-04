@@ -74,10 +74,8 @@ int main(int argc, char *argv[]) {
   vector<vector<long double>> newInitials(initials.size(), vector<long double>(initials[0].size()));
 
   HMM hmm(transitions, emissions, initials);
-  
-  for (int x = 0; x < 50; ++x) {
-    hmm.baumWelchIteration(sequence);
-  }
+
+  hmm.estimateMatrices(sequence);
 
   hmm.printHMM4();
 

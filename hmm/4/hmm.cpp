@@ -160,6 +160,12 @@ vector<int> HMM::getLikeliestHiddenStates(vector<int> sequence) {
   return likeliestHiddenStates;
 }
 
+void HMM::estimateMatrices(vector<int> sequence) {
+  for (int x = 0; x < 50; ++x) {
+    baumWelchIteration(sequence);
+  }
+}
+
 void HMM::baumWelchIteration(vector<int> sequence) {
   vector<vector<long double>> newTransitionMatrix(transitionMatrix.size(), vector<long double>(transitionMatrix[0].size()));
   vector<vector<long double>> newEmissionMatrix(emissionMatrix.size(), vector<long double>(emissionMatrix[0].size()));
