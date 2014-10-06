@@ -15,6 +15,7 @@ class HMM {
     vector<vector<long double>> emissionMatrix;
     vector<vector<long double>> initialMatrix;
   public:
+    HMM(int hiddenStates, int emissions);
     HMM(vector<vector<long double>> _transitionMatrix, vector<vector<long
         double>> _emissionMatrix, vector<vector<long double>> _initialMatrix);
     vector<long double> getNextEmissionDist();

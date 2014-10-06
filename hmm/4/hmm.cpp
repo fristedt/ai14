@@ -1,5 +1,28 @@
 #include "hmm.h"
 
+HMM::HMM(int hiddenStates, int emissions) {
+  transitionMatrix = vector<vector<long double>>(hiddenStates, vector<long double>(hiddenStates));
+  // TODO: Ensure this is the correct row-column order.
+  emissionMatrix = vector<vector<long double>>(hiddenStates, vector<long double>(emissions));
+  initialMatrix = vector<vector<long double>>(1, vector<long double>(hiddenStates));
+
+  for (int i = 0; i < hiddenStates; ++i) {
+    for (int j = 0; j < hiddenStates; ++j) {
+      transitionMatrix[i][j] = 1.0 / hiddenStates;
+    }
+  }
+
+  for (int j = 0; j < emissions; ++j) {
+    for (int i = 0; i < hiddenStates; ++i) {
+      emissionMatrix[i][j] = 1.0 / emissions;
+    }
+  }
+
+  for (int i = 0; i < hiddenStates; ++i) {
+    initialMatrix[0][i] = 1.0 / hiddenStates;
+  }
+}
+
 HMM::HMM(vector<vector<long double>> _transitionMatrix, vector<vector<long
     double>> _emissionMatrix, vector<vector<long double>> _initialMatrix) {
   transitionMatrix = _transitionMatrix;
