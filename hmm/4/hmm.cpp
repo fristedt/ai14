@@ -2,31 +2,8 @@
 
 HMM::HMM(int hiddenStates, int emissions) {
   transitionMatrix = vector<vector<long double>>(hiddenStates, vector<long double>(hiddenStates));
-  // TODO: Ensure this is the correct row-column order.
   emissionMatrix = vector<vector<long double>>(hiddenStates, vector<long double>(emissions));
   initialMatrix = vector<vector<long double>>(1, vector<long double>(hiddenStates));
-
-  // transitionMatrix = vector<vector<long double>>(5, vector<long double>(5));
-  // emissionMatrix = vector<vector<long double>>(5, vector<long double>(8));
-  // initialMatrix = vector<vector<long double>>(1, vector<long double>(5));
-
-  // transitionMatrix = {
-  //   {0.60, 0.10, 0.10, 0.10, 0.10},
-  //   {0.10, 0.60, 0.10, 0.10, 0.10},
-  //   {0.10, 0.10, 0.60, 0.10, 0.10},
-  //   {0.10, 0.10, 0.10, 0.60, 0.10},
-  //   {0.10, 0.10, 0.10, 0.10, 0.60}
-  // };
-  //
-  // emissionMatrix = {
-  //   {0.040, 0.040, 0.040, 0.330, 0.100, 0.330, 0.040, 0.040, 0.040},
-  //   {0.450, 0.050, 0.450, 0.000, 0.050, 0.000, 0.000, 0.000, 0.000},
-  //   {0.000, 0.000, 0.000, 0.225, 0.050, 0.225, 0.050, 0.400, 0.050},
-  //   {0.120, 0.120, 0.120, 0.120, 0.040, 0.120, 0.120, 0.120, 0.120},
-  //   {0.125, 0.125, 0.125, 0.125, 0.000, 0.125, 0.125, 0.125, 0.125}
-  // };
-
-  // initialMatrix = {{0.20, 0.20, 0.20, 0.20, 0.20}};
 
   for (int i = 0; i < hiddenStates; ++i) {
     for (int j = 0; j < hiddenStates; ++j) {

@@ -13,20 +13,17 @@ namespace ducks
       hmm.clear();
       hmm.shrink_to_fit();
 
-      // std::cerr << "INITIALIZING" << std::endl;
       for (unsigned int i = 0; i < pState.getNumBirds(); ++i) {
         HMM hmm1(STATES, DIRECTIONS);
         hmm.push_back(hmm1);
       }
       initialized = 1;
-      // std::cerr << "INITIALIZED" << std::endl;
     }
 
     if (pState.getBird(0).getSeqLength() == 99) 
       initialized = 0;
 
     for (unsigned int i = 0; i < pState.getNumBirds(); ++i) {
-      // std::cerr << "Processing bird: " << i << std::endl;
       Bird b = pState.getBird(i);
       if (b.isDead())
         continue;
@@ -52,10 +49,7 @@ namespace ducks
       }
 
       if (max > 0.6) {
-        // System.err.println("SHOOT!");
         return Action(i, (EMovement)nextMove);
-      } else {
-        // System.err.println(max);
       }
     }
 
