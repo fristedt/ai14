@@ -58,15 +58,15 @@ int main(int argc, char *argv[]) {
     if (y == initialColumns) { ++x; y = 0; }
   }
 
-  // Sequence.
-  int sequenceLength;
-  istringstream iss3(sequenceString);
-  iss3 >> sequenceLength;
-  vector<int> sequence(sequenceLength);
-  x = 0;
-  while (iss3 >> tmp) {
-    sequence[x++] = tmp;
-  }
+  // // Sequence.
+  // int sequenceLength;
+  // istringstream iss3(sequenceString);
+  // iss3 >> sequenceLength;
+  // vector<int> sequence(sequenceLength);
+  // x = 0;
+  // while (iss3 >> tmp) {
+  //   sequence[x++] = tmp;
+  // }
 
 
   vector<vector<long double>> newTransitions(transitions.size(), vector<long double>(transitions[0].size()));
@@ -74,10 +74,11 @@ int main(int argc, char *argv[]) {
   vector<vector<long double>> newInitials(initials.size(), vector<long double>(initials[0].size()));
 
   HMM hmm(transitions, emissions, initials);
+  hmm.printHMM1();
 
-  hmm.estimateMatrices(sequence);
-
-  hmm.printHMM4();
+  // hmm.estimateMatrices(sequence);
+  //
+  // hmm.printHMM4();
 
   return 0;
 }

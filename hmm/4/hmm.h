@@ -28,6 +28,7 @@ class HMM {
     vector<int> getLikeliestHiddenStates(vector<int> sequence);
     void estimateMatrices(vector<int> sequence);
     void baumWelchIteration(vector<int> sequence);
+    void printHMM1();
     void printHMM4();
 
     void setTransitionMatrix(vector<vector<long double>> _transitionMatrix);

@@ -6,14 +6,36 @@ HMM::HMM(int hiddenStates, int emissions) {
   emissionMatrix = vector<vector<long double>>(hiddenStates, vector<long double>(emissions));
   initialMatrix = vector<vector<long double>>(1, vector<long double>(hiddenStates));
 
+  // transitionMatrix = vector<vector<long double>>(5, vector<long double>(5));
+  // emissionMatrix = vector<vector<long double>>(5, vector<long double>(8));
+  // initialMatrix = vector<vector<long double>>(1, vector<long double>(5));
+
+  // transitionMatrix = {
+  //   {0.60, 0.10, 0.10, 0.10, 0.10},
+  //   {0.10, 0.60, 0.10, 0.10, 0.10},
+  //   {0.10, 0.10, 0.60, 0.10, 0.10},
+  //   {0.10, 0.10, 0.10, 0.60, 0.10},
+  //   {0.10, 0.10, 0.10, 0.10, 0.60}
+  // };
+  //
+  // emissionMatrix = {
+  //   {0.040, 0.040, 0.040, 0.330, 0.100, 0.330, 0.040, 0.040, 0.040},
+  //   {0.450, 0.050, 0.450, 0.000, 0.050, 0.000, 0.000, 0.000, 0.000},
+  //   {0.000, 0.000, 0.000, 0.225, 0.050, 0.225, 0.050, 0.400, 0.050},
+  //   {0.120, 0.120, 0.120, 0.120, 0.040, 0.120, 0.120, 0.120, 0.120},
+  //   {0.125, 0.125, 0.125, 0.125, 0.000, 0.125, 0.125, 0.125, 0.125}
+  // };
+
+  // initialMatrix = {{0.20, 0.20, 0.20, 0.20, 0.20}};
+
   for (int i = 0; i < hiddenStates; ++i) {
     for (int j = 0; j < hiddenStates; ++j) {
       transitionMatrix[i][j] = 1.0 / hiddenStates;
     }
   }
 
-  for (int j = 0; j < emissions; ++j) {
-    for (int i = 0; i < hiddenStates; ++i) {
+  for (int i = 0; i < hiddenStates; ++i) {
+    for (int j = 0; j < emissions; ++j) {
       emissionMatrix[i][j] = 1.0 / emissions;
     }
   }
@@ -184,7 +206,8 @@ vector<int> HMM::getLikeliestHiddenStates(vector<int> sequence) {
 }
 
 void HMM::estimateMatrices(vector<int> sequence) {
-  for (int x = 0; x < 50; ++x) {
+  // for (int x = 0; x < 74; ++x) {
+  for (int x = 0; x < 5; ++x) {
     baumWelchIteration(sequence);
   }
 }
@@ -231,6 +254,16 @@ void HMM::baumWelchIteration(vector<int> sequence) {
   transitionMatrix = newTransitionMatrix;
   emissionMatrix = newEmissionMatrix;
   initialMatrix = newInitialMatrix;
+}
+
+void HMM::printHMM1() {
+  std::vector<long double> nextEmissionDist = getNextEmissionDist();
+
+  // Print that shit. HMM1.
+  std::cout << 1 << " " << emissionMatrix[0].size();
+  for (unsigned int i = 0; i < emissionMatrix[0].size(); ++i) {
+    std::cout << " " << nextEmissionDist[i];
+  }
 }
 
 void HMM::printHMM4() {

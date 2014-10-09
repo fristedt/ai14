@@ -5,13 +5,25 @@
 #include "GameState.hpp"
 #include "Action.hpp"
 #include <vector>
+#include "hmm.h"
 
 namespace ducks
 {
 
 class Player
 {
-public:
+  private:
+    int STATES = 5;
+    // int DIRECTIONS = COUNT_MOVE;
+    int DIRECTIONS = 9;
+    int THRESHOLD = 95;
+    long double MIN_PROBABILITY = 0.9;
+    std::vector<HMM> hmm;
+    int initialized = 0;
+
+    int hits = 0;
+    int shots = 0;
+  public:
     /**
      * Constructor
      * There is no data in the beginning, so not much should be done here.
