@@ -9,12 +9,12 @@ namespace ducks
   }
 
   Action Player::shoot(const GameState &pState, const Deadline &pDue) {
+    // std::cerr << "Inside shoot." << std::endl;
     if (!initialized) {
       hmm.clear();
-      hmm.shrink_to_fit();
 
       for (unsigned int i = 0; i < pState.getNumBirds(); ++i) {
-        HMM hmm1(STATES, DIRECTIONS);
+        HMM hmm1(this -> STATES, this -> DIRECTIONS);
         hmm.push_back(hmm1);
       }
       initialized = 1;
@@ -24,6 +24,7 @@ namespace ducks
       initialized = 0;
 
     for (unsigned int i = 0; i < pState.getNumBirds(); ++i) {
+      // std::cerr << "Processing bird: " << i << std::endl;
       Bird b = pState.getBird(i);
       if (b.isDead())
         continue;
@@ -49,6 +50,7 @@ namespace ducks
       }
 
       if (max > 0.6) {
+        // std::cerr << "Shooting bird " << i << std::endl;
         return Action(i, (EMovement)nextMove);
       }
     }

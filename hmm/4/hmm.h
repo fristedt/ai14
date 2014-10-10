@@ -19,15 +19,15 @@ class HMM {
     HMM(vector<vector<long double>> _transitionMatrix, vector<vector<long
         double>> _emissionMatrix, vector<vector<long double>> _initialMatrix);
     vector<long double> getNextEmissionDist();
-    vector<vector<long double>> getAlpha(vector<int> sequence);
-    vector<vector<long double>> getBeta(vector<int> sequence);
-    long double getNorm(vector<vector<long double>> alpha, vector<vector<long double>> beta);
-    vector<vector<long double>> getGamma(vector<vector<long double>> alpha, vector<vector<long double>> beta, long double norm);
-    vector<vector<long double>> getInitials(vector<vector<long double>> gamma);
-    long double getForwardProbability(vector<int> sequence);
-    vector<int> getLikeliestHiddenStates(vector<int> sequence);
-    void estimateMatrices(vector<int> sequence);
-    void baumWelchIteration(vector<int> sequence);
+    vector<vector<long double>> getAlpha(vector<int> &sequence);
+    vector<vector<long double>> getBeta(vector<int> &sequence);
+    long double getNorm(vector<vector<long double>> &alpha, vector<vector<long double>> &beta);
+    vector<vector<long double>> getGamma(vector<vector<long double>> &alpha, vector<vector<long double>> &beta, long double norm);
+    vector<vector<long double>> getInitials(vector<vector<long double>> &gamma);
+    long double getForwardProbability(vector<int> &sequence);
+    vector<int> getLikeliestHiddenStates(vector<int> &sequence);
+    void estimateMatrices(vector<int> &sequence);
+    void baumWelchIteration(vector<int> &sequence);
     void printHMM1();
     void printHMM4();
 

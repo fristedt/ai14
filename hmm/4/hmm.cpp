@@ -48,7 +48,7 @@ vector<long double> HMM::getNextEmissionDist() {
   return nextEmissionDist;
 }
 
-vector<vector<long double>> HMM::getAlpha(vector<int> sequence) {
+vector<vector<long double>> HMM::getAlpha(vector<int> &sequence) {
   vector<vector<long double>> alpha(sequence.size(), vector<long double>(transitionMatrix.size()));
   // Initialize. Calculate alphaduder sequence[0].
   for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
@@ -69,7 +69,7 @@ vector<vector<long double>> HMM::getAlpha(vector<int> sequence) {
   return alpha;
 }
 
-vector<vector<long double>> HMM::getBeta(vector<int> sequence) {
+vector<vector<long double>> HMM::getBeta(vector<int> &sequence) {
   vector<vector<long double>> beta(sequence.size(), vector<long double>(transitionMatrix.size()));
   // Init.
   for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
@@ -89,7 +89,7 @@ vector<vector<long double>> HMM::getBeta(vector<int> sequence) {
   return beta;
 }
 
-long double HMM::getNorm(vector<vector<long double>> alpha, vector<vector<long double>> beta) {
+long double HMM::getNorm(vector<vector<long double>> &alpha, vector<vector<long double>> &beta) {
   long double sum = 0;
   for (unsigned int i = 0; i < alpha[0].size(); ++i) {
     // cout << "alpha0i: " << alpha[0][i] << " beta0i: " << beta[0][i] << endl;
@@ -98,7 +98,7 @@ long double HMM::getNorm(vector<vector<long double>> alpha, vector<vector<long d
   return sum;
 }
 
-vector<vector<long double>> HMM::getGamma(vector<vector<long double>> alpha, vector<vector<long double>> beta, long double norm) {
+vector<vector<long double>> HMM::getGamma(vector<vector<long double>> &alpha, vector<vector<long double>> &beta, long double norm) {
   vector<vector<long double>> gamma(alpha.size(), vector<long double>(alpha[0].size()));
   for (unsigned int t = 0; t < alpha.size(); ++t) {
     // long double tsum = 0;
@@ -115,7 +115,7 @@ vector<vector<long double>> HMM::getGamma(vector<vector<long double>> alpha, vec
   return gamma;
 }
 
-vector<vector<long double>> HMM::getInitials(vector<vector<long double>> gamma) {
+vector<vector<long double>> HMM::getInitials(vector<vector<long double>> &gamma) {
   vector<vector<long double>> initials(1, vector<long double>(gamma.size()));
   for (unsigned int i = 0; i < gamma.size(); ++i) {
     initials[0][i] = gamma[0][i];
@@ -123,7 +123,7 @@ vector<vector<long double>> HMM::getInitials(vector<vector<long double>> gamma) 
   return initials;
 }
 
-long double HMM::getForwardProbability(vector<int> sequence) {
+long double HMM::getForwardProbability(vector<int> &sequence) {
   vector<vector<long double>> alpha = getAlpha(sequence);
 
   // Termination.
@@ -134,7 +134,7 @@ long double HMM::getForwardProbability(vector<int> sequence) {
   return sum;
 }
 
-vector<int> HMM::getLikeliestHiddenStates(vector<int> sequence) {
+vector<int> HMM::getLikeliestHiddenStates(vector<int> &sequence) {
   vector<vector<long double>> delta(sequence.size(), vector<long double>(transitionMatrix.size()));
   vector<vector<int>> psi(sequence.size(), vector<int>(transitionMatrix.size()));
   vector<int> likeliestHiddenStates(sequence.size());
@@ -182,16 +182,25 @@ vector<int> HMM::getLikeliestHiddenStates(vector<int> sequence) {
   return likeliestHiddenStates;
 }
 
-void HMM::estimateMatrices(vector<int> sequence) {
+void HMM::estimateMatrices(vector<int> &sequence) {
   // for (int x = 0; x < 74; ++x) {
   for (int x = 0; x < 5; ++x) {
     baumWelchIteration(sequence);
   }
 }
 
-void HMM::baumWelchIteration(vector<int> sequence) {
-  vector<vector<long double>> newTransitionMatrix(transitionMatrix.size(), vector<long double>(transitionMatrix[0].size()));
-  vector<vector<long double>> newEmissionMatrix(emissionMatrix.size(), vector<long double>(emissionMatrix[0].size()));
+void HMM::baumWelchIteration(vector<int> &sequence) {
+  // for (unsigned int i = 0; i < sequence.size(); ++i) {
+  //   if (0 <= sequence[i] && sequence[i] <= 8) continue;
+  //   cerr << "over 8 " << i << std::endl;
+  //   sequence.erase(sequence.begin() + i);
+  // }
+  // vector<vector<long double>> newTransitionMatrix(transitionMatrix.size(), vector<long double>(transitionMatrix.size()));
+  // vector<vector<long double>> newEmissionMatrix(emissionMatrix.size(), vector<long double>(emissionMatrix[0].size()));
+  // vector<vector<long double>> newEmissionMatrix(5, vector<long double>(9));
+
+  // vector<vector<long double>> newTransitionMatrix(transitionMatrix);
+  // vector<vector<long double>> newEmissionMatrix(emissionMatrix);
 
   vector<vector<long double>> alpha = getAlpha(sequence);
   vector<vector<long double>> beta = getBeta(sequence);
@@ -210,7 +219,8 @@ void HMM::baumWelchIteration(vector<int> sequence) {
         num += xi;
         den += gamma[t][i];
       }
-      newTransitionMatrix[i][j] = num / den;
+      // newTransitionMatrix[i][j] = num / den;
+      transitionMatrix[i][j] = num / den;
     }
   }
 
@@ -224,13 +234,13 @@ void HMM::baumWelchIteration(vector<int> sequence) {
           num += gamma[t][i];
         den += gamma[t][i];
       }
-      newEmissionMatrix[i][j] = num / den;
+      emissionMatrix[i][j] = num / den;
     }
   }
 
-  transitionMatrix = newTransitionMatrix;
-  emissionMatrix = newEmissionMatrix;
-  initialMatrix = newInitialMatrix;
+  // transitionMatrix = newTransitionMatrix;
+  // emissionMatrix = newEmissionMatrix;
+  // initialMatrix = newInitialMatrix;
 }
 
 void HMM::printHMM1() {
