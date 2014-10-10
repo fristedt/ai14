@@ -14,12 +14,12 @@ class Player
 {
   private:
     int STATES = 5;
-    // int DIRECTIONS = COUNT_MOVE;
     int DIRECTIONS = 9;
-    int THRESHOLD = 95;
-    long double MIN_PROBABILITY = 0.9;
+    int THRESHOLD = 0;
+    long double MIN_PROBABILITY = 0.60;
     std::vector<HMM> hmm;
-    int initialized = 0;
+
+    int lastRound = -1;
 
     int hits = 0;
     int shots = 0;

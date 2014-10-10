@@ -1,9 +1,11 @@
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 #include <sstream>
 #include <vector>
 #include <cmath>
 #include <cassert>
+#include <random>
 
 #define FAULT 0.0000001
 
@@ -34,4 +36,6 @@ class HMM {
     void setTransitionMatrix(vector<vector<long double>> _transitionMatrix);
     void setEmissionMatrix(vector<vector<long double>> _emissionMatrix);
     void setInitialMatrix(vector<vector<long double>> _initialMatrix);
+
+    void printEmissionMatrix();
 };

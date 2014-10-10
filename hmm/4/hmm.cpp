@@ -4,6 +4,9 @@ HMM::HMM(int hiddenStates, int emissions) {
   transitionMatrix = vector<vector<long double>>(hiddenStates, vector<long double>(hiddenStates));
   emissionMatrix = vector<vector<long double>>(hiddenStates, vector<long double>(emissions));
   initialMatrix = vector<vector<long double>>(1, vector<long double>(hiddenStates));
+  
+  // default_random_engine generator((unsigned int)time(0));
+  // normal_distribution<long double> distribution(0, 1);
 
   for (int i = 0; i < hiddenStates; ++i) {
     for (int j = 0; j < hiddenStates; ++j) {
@@ -12,8 +15,11 @@ HMM::HMM(int hiddenStates, int emissions) {
   }
 
   for (int i = 0; i < hiddenStates; ++i) {
+    // long double delta = 1.0 / 9;
     for (int j = 0; j < emissions; ++j) {
       emissionMatrix[i][j] = 1.0 / emissions;
+      // emissionMatrix[i][j] = delta;
+      // delta -= abs(distribution(generator) * 0.0001);
     }
   }
 
@@ -183,25 +189,29 @@ vector<int> HMM::getLikeliestHiddenStates(vector<int> &sequence) {
 }
 
 void HMM::estimateMatrices(vector<int> &sequence) {
-  // for (int x = 0; x < 74; ++x) {
-  for (int x = 0; x < 5; ++x) {
+  vector<vector<long double>> oldTransition(transitionMatrix);
+  vector<vector<long double>> oldEmission(emissionMatrix);
+  long double oldDelta = 100;
+  for (int x = 0; x < 25; ++x) {
+    // printEmissionMatrix();
     baumWelchIteration(sequence);
+    long double deltaSum = 0;
+    for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+      for (unsigned int j = 0; j < transitionMatrix.size(); ++j) 
+        deltaSum += abs(transitionMatrix[i][j] - oldTransition[i][j]);
+      for (unsigned int j = 0; j < emissionMatrix[0].size(); ++j) 
+        deltaSum += abs(emissionMatrix[i][j] - oldEmission[i][j]);
+    }
+    // cerr << abs(oldDelta - deltaSum) << std::endl;
+    if (abs(oldDelta - deltaSum) < 1e-18) {
+      // cerr << "BREAKING AT " << x << std::endl;
+      break;
+    }
+    oldDelta = deltaSum;
   }
 }
 
 void HMM::baumWelchIteration(vector<int> &sequence) {
-  // for (unsigned int i = 0; i < sequence.size(); ++i) {
-  //   if (0 <= sequence[i] && sequence[i] <= 8) continue;
-  //   cerr << "over 8 " << i << std::endl;
-  //   sequence.erase(sequence.begin() + i);
-  // }
-  // vector<vector<long double>> newTransitionMatrix(transitionMatrix.size(), vector<long double>(transitionMatrix.size()));
-  // vector<vector<long double>> newEmissionMatrix(emissionMatrix.size(), vector<long double>(emissionMatrix[0].size()));
-  // vector<vector<long double>> newEmissionMatrix(5, vector<long double>(9));
-
-  // vector<vector<long double>> newTransitionMatrix(transitionMatrix);
-  // vector<vector<long double>> newEmissionMatrix(emissionMatrix);
-
   vector<vector<long double>> alpha = getAlpha(sequence);
   vector<vector<long double>> beta = getBeta(sequence);
   long double norm = getNorm(alpha, beta);
@@ -237,10 +247,6 @@ void HMM::baumWelchIteration(vector<int> &sequence) {
       emissionMatrix[i][j] = num / den;
     }
   }
-
-  // transitionMatrix = newTransitionMatrix;
-  // emissionMatrix = newEmissionMatrix;
-  // initialMatrix = newInitialMatrix;
 }
 
 void HMM::printHMM1() {
@@ -283,4 +289,14 @@ void HMM::setEmissionMatrix(vector<vector<long double>> _emissionMatrix) {
 
 void HMM::setInitialMatrix(vector<vector<long double>> _initialMatrix) {
   initialMatrix = _initialMatrix;
+}
+
+void HMM::printEmissionMatrix() {
+  for (unsigned int i = 0; i < emissionMatrix.size(); ++i) {
+    for (unsigned int j = 0; j < emissionMatrix[0].size(); ++j) {
+      cerr << emissionMatrix[i][j] << " ";
+    }
+    cerr << endl;
+  }
+  cerr << endl;
 }
