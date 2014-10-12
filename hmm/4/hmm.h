@@ -29,7 +29,7 @@ class HMM {
     long double getForwardProbability(vector<int> &sequence);
     vector<int> getLikeliestHiddenStates(vector<int> &sequence);
     void estimateMatrices(vector<int> &sequence);
-    void baumWelchIteration(vector<int> &sequence);
+    void baumWelchIteration(vector<int> sequence);
     void printHMM1();
     void printHMM4();
 
@@ -37,5 +37,7 @@ class HMM {
     void setEmissionMatrix(vector<vector<long double>> _emissionMatrix);
     void setInitialMatrix(vector<vector<long double>> _initialMatrix);
 
+    void printTransitionMatrix();
     void printEmissionMatrix();
+    void printInitialStates();
 };

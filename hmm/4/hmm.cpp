@@ -8,6 +8,13 @@ HMM::HMM(int hiddenStates, int emissions) {
   // default_random_engine generator((unsigned int)time(0));
   // normal_distribution<long double> distribution(0, 1);
 
+  // transitionMatrix = {
+  //   {0.6, 0.1, 0.1, 0.1, 0.1},
+  //   {0.1, 0.6, 0.1, 0.1, 0.1},
+  //   {0.1, 0.1, 0.6, 0.1, 0.1},
+  //   {0.1, 0.1, 0.1, 0.6, 0.1},
+  //   {0.1, 0.1, 0.1, 0.1, 0.6}
+  // };
   for (int i = 0; i < hiddenStates; ++i) {
     for (int j = 0; j < hiddenStates; ++j) {
       transitionMatrix[i][j] = 1.0 / hiddenStates;
@@ -192,7 +199,8 @@ void HMM::estimateMatrices(vector<int> &sequence) {
   vector<vector<long double>> oldTransition(transitionMatrix);
   vector<vector<long double>> oldEmission(emissionMatrix);
   long double oldDelta = 100;
-  for (int x = 0; x < 25; ++x) {
+  for (int x = 0; x < 100; ++x) {
+    // printTransitionMatrix();
     // printEmissionMatrix();
     baumWelchIteration(sequence);
     long double deltaSum = 0;
@@ -211,7 +219,7 @@ void HMM::estimateMatrices(vector<int> &sequence) {
   }
 }
 
-void HMM::baumWelchIteration(vector<int> &sequence) {
+void HMM::baumWelchIteration(vector<int> sequence) {
   vector<vector<long double>> alpha = getAlpha(sequence);
   vector<vector<long double>> beta = getBeta(sequence);
   long double norm = getNorm(alpha, beta);
@@ -230,7 +238,10 @@ void HMM::baumWelchIteration(vector<int> &sequence) {
         den += gamma[t][i];
       }
       // newTransitionMatrix[i][j] = num / den;
+      // cerr << "num " << num << endl;
+      // cerr << "den " << den << endl;
       transitionMatrix[i][j] = num / den;
+      // cerr << "num / den " << transitionMatrix[i][j] << endl << endl;
     }
   }
 
@@ -291,12 +302,32 @@ void HMM::setInitialMatrix(vector<vector<long double>> _initialMatrix) {
   initialMatrix = _initialMatrix;
 }
 
+void HMM::printTransitionMatrix() {
+  cerr << "Printing transitionMatrix" << endl;
+  for (unsigned int i = 0; i < transitionMatrix.size(); ++i) {
+    for (unsigned int j = 0; j < transitionMatrix[0].size(); ++j) {
+      cerr << transitionMatrix[i][j] << " ";
+    }
+    cerr << endl;
+  }
+  cerr << endl;
+}
+
 void HMM::printEmissionMatrix() {
+  cerr << "Printing emissionMatrix" << endl;
   for (unsigned int i = 0; i < emissionMatrix.size(); ++i) {
     for (unsigned int j = 0; j < emissionMatrix[0].size(); ++j) {
       cerr << emissionMatrix[i][j] << " ";
     }
     cerr << endl;
+  }
+  cerr << endl;
+}
+
+void HMM::printInitialStates() {
+  cerr << "Printing initialMatrix" << endl;
+  for (unsigned int i = 0; i < emissionMatrix.size(); ++i) {
+    cerr << emissionMatrix[0][i] << " ";
   }
   cerr << endl;
 }

@@ -24,8 +24,9 @@ namespace ducks
         continue;
 
       int n = b.getSeqLength();
-      if (n < THRESHOLD)
-        continue;
+
+      // if (n < THRESHOLD || pState.getRound() == 0)
+      //   continue;
 
       std::vector<int> seq(n, 0);
       for (int j = 0; j < n; ++j) {
@@ -45,9 +46,19 @@ namespace ducks
       }
 
       if (max > MIN_PROBABILITY) {
+        std::cerr << "Shooting with prob: " << max << std::endl;
+        hmm[i].printTransitionMatrix();
+        hmm[i].printEmissionMatrix();
+        std::cerr << std::endl << std::endl;
+        ++shots;
         return Action(i, (EMovement)nextMove);
       }
     }
+
+    // cerr << "Shots: " << shots << endl;
+    // cerr << "Hits:  " << hits << endl;
+    // if (shots != 0) 
+    //   cerr << "Rate:  " << (double) hits / (double) shots << endl << endl;
 
     // This line choose not to shoot
     return cDontShoot;
@@ -68,6 +79,7 @@ namespace ducks
     /*
      * If you hit the bird you are trying to shoot, you will be notified through this function.
      */
+    ++hits;
     std::cerr << "HIT BIRD!!!" << std::endl;
   }
 

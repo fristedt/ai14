@@ -15,7 +15,7 @@ class Player
   private:
     int STATES = 5;
     int DIRECTIONS = 9;
-    int THRESHOLD = 0;
+    int THRESHOLD = 45;
     long double MIN_PROBABILITY = 0.60;
     std::vector<HMM> hmm;
 
